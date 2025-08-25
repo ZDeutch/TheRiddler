@@ -10,9 +10,17 @@ public class Riddler {
 
     public String decryptOne(String encrypted) {
         String decrypted = "";
-
-        // TODO: Complete the decryptOne() function.
-
+        int shift = 12;
+        for(int i = 0; i < encrypted.length(); i++) {
+            if(Character.isLetter(encrypted.charAt(i))) {
+                char temp = encrypted.charAt(i);
+                if((temp - shift) <= 'a' || (temp - shift) >= 'z') {
+                    decrypted +=
+                }
+            } else {
+                decrypted += encrypted.charAt(i);
+            }
+        }
         return decrypted;
     }
 
