@@ -8,17 +8,23 @@
  */
 public class Riddler {
 
+    // Unsure whether the method for wrapping the text is correct
+    // Wasn't able to determine how to wrap around the alphabet
     public String decryptOne(String encrypted) {
         String decrypted = "";
         int shift = 12;
         for(int i = 0; i < encrypted.length(); i++) {
+            char temp = encrypted.charAt(i);
             if(Character.isLetter(encrypted.charAt(i))) {
-                char temp = encrypted.charAt(i);
-                if((temp - shift) <= 'a' || (temp - shift) >= 'z') {
-                    decrypted +=
+                if(temp >= 'A' || temp <= 'Z') {
+                    char shifted = (char) ((char) (temp - 'A' - 12 + 26) + 'A');
+                    decrypted += shifted;
                 }
+            } else if(temp >= 'a' || temp <= 'z') {
+                char shifted = (char) ((char) (temp - 'a' - 12 + 26) + 'a');
+                decrypted += shifted;
             } else {
-                decrypted += encrypted.charAt(i);
+                decrypted += temp;
             }
         }
         return decrypted;
