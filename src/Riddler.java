@@ -17,11 +17,11 @@ public class Riddler {
             char temp = encrypted.charAt(i);
             if(Character.isLetter(encrypted.charAt(i))) {
                 if(temp >= 'A' || temp <= 'Z') {
-                    char shifted = (char) ((char) (temp - 'A' - 12 + 26) + 'A');
+                    char shifted = (char) ((char) (temp - 'A' - 9 + 26) + 'A');
                     decrypted += shifted;
                 }
             } else if(temp >= 'a' || temp <= 'z') {
-                char shifted = (char) ((char) (temp - 'a' - 12 + 26) + 'a');
+                char shifted = (char) ((char) (temp - 'a' - 9 + 26) + 'a');
                 decrypted += shifted;
             } else {
                 decrypted += temp;
@@ -32,9 +32,19 @@ public class Riddler {
 
     public String decryptTwo(String encrypted) {
         String decrypted = "";
+        String current = "";
 
-        // TODO: Complete the decryptTwo() function.
-
+        for(int i = 0; i < encrypted.length(); i++) {
+            char temp = encrypted.charAt(i);
+            if(temp != ' '){
+                current += temp;
+            } else {
+                int num = Integer.parseInt(current);
+                char letter = (char) num;
+                decrypted += letter;
+                current = "";
+            }
+        }
         return decrypted;
     }
 
